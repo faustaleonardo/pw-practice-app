@@ -2,28 +2,20 @@ import { test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:4200");
+  await page.getByText("Forms").click();
+  await page.getByText("Form Layouts").click();
 });
 
-test.describe("suite1", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.getByText("Forms").click();
-  });
+test("Locator syntax rules", async ({ page }) => {
+  // await page.locator("input").first().click();
+  // await page.getByRole("textbox", { name: "Email" }).first().click();
+  // await page.getByRole("button", { name: "Sign in" }).first().click();
 
-  test("the first test", async ({ page }) => {
-    await page.getByText("Form Layouts").click();
-  });
+  // await page.getByLabel("Email").first().click();
+  // await page.getByPlaceholder("Jane Doe").click();
+  // await page.getByText("Using the Grid").click();
+  // await page.getByTitle("IoT Dashboard").click();
+  // await page.getByTestId("emailInput").click();
 
-  test("navigate to datepicker", async ({ page }) => {
-    await page.getByText("Datepicker").click();
-  });
-});
-
-test.describe("suite2", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.getByText("Modal & Overlays").click();
-  });
-
-  test("navigate to Echarts", async ({ page }) => {
-    await page.getByText("Dialog").click();
-  });
+  await page.getByTestId("SignIn").click();
 });
